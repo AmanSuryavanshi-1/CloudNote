@@ -20,10 +20,11 @@ router.post("/createuser",
     }),
   ],
   async (req, res) => {
+    let success = false;
     //if there are errors, return Bad request and the error message
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success, errors: errors.array() });
     }
 
     //check whether the user with this email exists already
@@ -33,7 +34,7 @@ router.post("/createuser",
       if (user) {
         return res
           .status(400)
-          .json({ erorr: "A user with this email already exists" });
+          .json({ success, error: "A user with this email already exists" });
       }
 
       // => we will use AWAIT wherever a function is returning promise
@@ -67,8 +68,8 @@ router.post("/createuser",
       // it will give a unique token (authtoken) whenever a user enter email id and password 
       // JWT.VERIFY is used ot verify the user using the authtoken
       // [J W T] JSON WEB TOKEN (installed using npm i jsonwebtoken ) -> It is a way to verify a user
-      
-      res.json({authtoken})
+      success=true;
+      res.json({ success, authtoken})
 
       // catching errors
     } catch (error) {
@@ -90,6 +91,7 @@ router.post("/login",
 
 //if there are errors, return Bad request and the error message
    
+    let success = false;
      const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -105,7 +107,8 @@ router.post("/login",
 
       const passwordCompare = await bcrypt.compare(password, user.password);
       if(!passwordCompare){
-        return res.status(400).json({error: "Please try to login with correct credentials"});
+        success = false
+        return res.status(400).json({success, error: "Please try to login with correct credentials"});
       }
 
       const data={
@@ -114,7 +117,8 @@ router.post("/login",
           }
         }
         const authtoken = jwt.sign(data, JWT_SECRET);
-        res.json({authtoken})
+        success = true;
+        res.json({success,authtoken})
     }
     catch (error) {
       console.error(error.message);
