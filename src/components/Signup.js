@@ -35,9 +35,10 @@ const signup = (props) => {
    };
 
   return (
-    <div className="container">
+    <div className="container mt-2">
+      <h2 className='my-2'>SignUp to CloudNote</h2>
     <form onSubmit={handleSubmit}>
-  <div className="mb-3">
+  <div className="my-3">
     <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
     <input type="text" className="form-control" id="name" name="name" onChange={onChange} aria-describedby="emailHelp"/>
     </div>

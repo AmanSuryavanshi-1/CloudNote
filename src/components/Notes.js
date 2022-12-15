@@ -2,13 +2,21 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import noteContext from "../context/notes/noteContext"; //Going 2 step back in src then going in context then in notes then in noteContext
 import Noteitem from "./Noteitem";
 import AddNote from "./AddNote";
+import { useNavigate } from "react-router-dom";
 
 const Notes = (props) => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context; //declaring to use context api
 
+  const navigate = useNavigate();
   useEffect(() => {
-    getNotes()
+    if(localStorage.getItem('token'))  //if localStorage.getItem is not null then get notes else redirect to login page
+    {
+      getNotes()
+    }
+    else{
+      navigate("/login");
+    }
   }, []);
 
   const [note, setNote] = useState({
