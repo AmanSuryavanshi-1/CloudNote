@@ -21,13 +21,21 @@ function App() {
     },3000);
   }
 
+   let myStyle = {
+    backgroundColor:'rgb(49, 50, 50)',
+    borderColor:'white',
+    color:'white',
+}
+
+ 
   return (
     <>
+    <div className="main"style={myStyle}>
       <NoteState>
         <BrowserRouter>
           <Navbar />
           <Alert alert={alert}/>
-          <div className="container">
+          <div className="container" >
             <Routes>
               <Route exact path="/" element={<Home showAlert={showAlert} />}></Route>
               <Route exact path="/About" element={<About showAlert={showAlert} />}></Route>
@@ -37,6 +45,7 @@ function App() {
           </div>
         </BrowserRouter>
       </NoteState>
+      </div>
     </>
   );
   }

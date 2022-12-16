@@ -11,7 +11,7 @@ const Alert = (props) => {
   }
 
   return (
-    <div style = {{height: '50px'}}>
+    <div style = {{height: '50px'}} >
     {props.alert && <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
      <strong>{capitalize(props.alert.type)}</strong>: {props.alert.msg}
       {/* If props.alert is not null the div part will run else nothing will run  */}

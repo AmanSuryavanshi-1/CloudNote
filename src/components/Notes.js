@@ -52,7 +52,7 @@ const Notes = (props) => {
 
       <button ref={ref}
         type="button"
-        className="btn btn-primary d-none"
+        className="btn btn-warning d-none"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
@@ -102,12 +102,12 @@ const Notes = (props) => {
               <button
                 ref={refClose}
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-warning"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
-              <button disabled={note.etitle.length<5 || note.edescription.length<5} onClick={handleClick} type="button" className="btn btn-primary">
+              <button disabled={note.etitle.length<5 || note.edescription.length<5} onClick={handleClick} type="button" className="btn btn-warning">
                 Update Note
               </button>
             </div>
