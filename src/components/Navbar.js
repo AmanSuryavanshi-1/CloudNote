@@ -4,11 +4,11 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
 
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
 
   const handleLogout = () =>{
     localStorage.removeItem('token');
-   navigate("/login");
+   Navigate("/Login");
   }
 
   let location = useLocation();
@@ -33,8 +33,8 @@ const Navbar = () => {
         
         {/* if localStorage.getItem is null then return logout else show the form  */}
         {!localStorage.getItem('token')?<form className='d-flex'>
-          <Link className='btn btn-warning' to='/login' role="button" style={{color:'black',backgroundColor:'#d1ac19', borderRadius:'5px',margin:'10px', width:'8.4em'}}>  <i className="fa-solid fa-right-to-bracket" style={{backgroundColor:'#d1ac19', marginRight:'10px',marginLeft:'8px'}}></i>Login</Link>
-          <Link className='btn btn-warning' to='/signup' role="button" style={{color:'black',backgroundColor:'#d1ac19', borderRadius:'5px',margin:'10px', width:'8.4em'}}>  <i className="fa-solid fa-user-plus" style={{backgroundColor:'#d1ac19', marginRight:'10px',marginLeft:'8px'}}></i> Sign Up</Link>
+          <Link className='btn btn-warning' to='/Login' role="button" style={{color:'black',backgroundColor:'#d1ac19', borderRadius:'5px',margin:'10px', width:'8.4em'}}>  <i className="fa-solid fa-right-to-bracket" style={{backgroundColor:'#d1ac19', marginRight:'10px',marginLeft:'8px'}}></i>Login</Link>
+          <Link className='btn btn-warning' to='/Signup' role="button" style={{color:'black',backgroundColor:'#d1ac19', borderRadius:'5px',margin:'10px', width:'8.4em'}}>  <i className="fa-solid fa-user-plus" style={{backgroundColor:'#d1ac19', marginRight:'10px',marginLeft:'8px'}}></i> Sign Up</Link>
         </form>: <button onClick={handleLogout} className="btn btn-warning" style={{color:'black',backgroundColor:'#d1ac19', borderRadius:'5px',margin:'10px', width:'8.5em'}}>  <i className="fa-solid fa-right-from-bracket" style={{backgroundColor:'#d1ac19', marginRight:'10px',marginLeft:'10px'}}></i>Logout</button>
         }
       </div>

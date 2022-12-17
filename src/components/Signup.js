@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 
-const signup = (props) => {
+const Signup = (props) => {
 
   const [credentials, setCredentials] = useState({name:"", email: "", password: "",cpassword:""})
 
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
@@ -22,7 +22,7 @@ const signup = (props) => {
     if (json.success){
       // redirect
       localStorage.setItem('token',json.authtoken);
-      navigate("/");
+      Navigate("/");
       props.showAlert("Account Created Successfully","success");
     }
     else{
@@ -63,4 +63,4 @@ const signup = (props) => {
   )
 }
 
-export default signup
+export default Signup

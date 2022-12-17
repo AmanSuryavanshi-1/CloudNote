@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 
-const login = (props) => {
+const Login = (props) => {
 
   const [credentials, setCredentials] = useState({email: "", password: ""})
 
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   
   const handleSubmit = async(e)=>{
     e.preventDefault();
@@ -22,7 +22,7 @@ const login = (props) => {
       // save the authtoken and redirect
       localStorage.setItem('token',json.authtoken);
       props.showAlert("Logged in Successfully","success");
-      navigate("/");
+      Navigate("/");
     }
     else{
       props.showAlert("Invalid Details! Please try again","danger");
@@ -52,4 +52,4 @@ const login = (props) => {
   )
 }
 
-export default login
+export default Login

@@ -8,14 +8,14 @@ const Notes = (props) => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context; //declaring to use context api
 
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   useEffect(() => {
     if(localStorage.getItem('token'))  //if localStorage.getItem is not null then get notes else redirect to login page
     {
       getNotes()
     }
     else{
-      navigate("/login");
+      Navigate("/Login");
     }
   }, []);
 
